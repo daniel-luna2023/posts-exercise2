@@ -1,13 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
-import Post from "./post/page";
-
-interface PostProps {
-  userId?: number;
-  id?: number;
-  title?: string;
-  body?: string;
-}
+import Post from "../components/Post";
+import {PostProps } from "../components/types"
 
 function Posts() {
   const [posts, setPosts] = useState<PostProps[]>([]);

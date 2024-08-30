@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
 import Post from "../components/Post";
-import {PostProps } from "../components/types"
+import type { PostProps } from "@/types";
 
 function Posts() {
   const [posts, setPosts] = useState<PostProps[]>([]);

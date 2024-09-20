@@ -15,7 +15,6 @@ export default function UsersProvider(  { children }: { children: React.ReactNod
       try {
         const response = await api.get('/get/users');
         setUsers(response.data);
-        console.log(response);
       } catch (error) {
         console.error('Error fetching users:', error);
       }

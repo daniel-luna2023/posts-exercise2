@@ -5,7 +5,6 @@ import type { PostProps } from "@/types";
 async function getAllPosts(): Promise<PostProps[]> {
   try {
     const res = await api.get('/get/posts');
-    console.log(res);
     return res.data;
   } catch (error) {
     console.error("Error fetching posts:", error);
@@ -25,3 +24,4 @@ export default async function Posts() {
     </div>
   );
 }
+

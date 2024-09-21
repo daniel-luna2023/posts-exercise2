@@ -1,9 +1,16 @@
+import api from "@/utils/api";
 import Post from "../components/Post";
 import type { PostProps } from "@/types";
 
 async function getAllPosts(): Promise<PostProps[]> {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  return res.json();
+  try {
+    const res = await api.get('/get/posts');
+    console.log(res);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    throw error;
+  }
 }
 
 export default async function Posts() {

@@ -7,13 +7,13 @@ import { useParams } from "next/navigation";
 
 export default function UserDetail() {
   const { id } = useParams();
-  const [userId, setUserId] = useState<UserProps | null>(null);
+  const [user, setUser] = useState<UserProps | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await api.get(`get/user/${id}`);
-        setUserId(response.data);
+        setUser(response.data);
       } catch (error) {
         console.error('Error fetching user:', error);
       }
@@ -21,8 +21,8 @@ export default function UserDetail() {
     fetchUser();
   }, [id]);
   
-  if (!userId) {
-    return <div>Cargando...</div>;
+  if (!user) {
+    return <div>Loading..</div>;
   }
 
   return (
@@ -31,17 +31,17 @@ export default function UserDetail() {
         <h1 className="text-lg font-bold py-3">About you</h1>
         <div className="border border-slate-200 p-4 rounded-lg shadow">
           <div className="font-bold flex flex-col gap-1 mb-3 text-xs">
-            <span className="font-normal text-slate-500 text-xs flex flex-col gap-1 mb-2 px-3">{userId.name}</span>
+            <span className="font-normal text-slate-500 text-xs flex flex-col gap-1 mb-2 px-3">{user.name}</span>
           </div>
           <div className="font-bold flex flex-col gap-1 mb-3 text-xs">
-            <span className="font-normal text-slate-500 text-xs flex flex-col gap-1 mb-2 px-3">{userId.username}</span>
+            <span className="font-normal text-slate-500 text-xs flex flex-col gap-1 mb-2 px-3">{user.username}</span>
           </div>
           <div className="font-bold flex flex-col gap-1 mb-3 text-xs">
-            <span className="font-normal text-slate-500 text-xs flex flex-col gap-1 mb-2 px-3">{userId.email}</span>
+            <span className="font-normal text-slate-500 text-xs flex flex-col gap-1 mb-2 px-3">{user.email}</span>
           </div>
           <div className="font-bold flex flex-col gap-1 mb-3 text-xs">
             <span className="font-normal text-slate-500 text-xs flex flex-col gap-1 mb-2 px-3">
-              {userId.street}, {userId.city}, {userId.zipcode}
+              {user.street}, {user.city}, {user.zipcode}
             </span>
           </div>       
         </div>

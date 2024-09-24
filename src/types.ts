@@ -8,13 +8,13 @@ export interface PostProps {
 }
 
 export interface UserProps{
-  comments: any;
-  todos: any;
-  posts: any;
-  company: any;
+  comments: string;
+  todos: string;
+  posts: string;
+  company: string;
   website: string;
   phone: string;
-  address: any;
+  address: string;
   id?: number;
   username?: string;
   name?: string,
@@ -37,16 +37,3 @@ export interface Todo {
   completed: boolean;
   userId: number;
 }
-
-export interface Address {
-  street: string;
-  city: string;
-  zipcode: string;
-}
-
-export interface Company {
-  name: string;
-  catchPhrase: string;
-  bs: string;
-}
-

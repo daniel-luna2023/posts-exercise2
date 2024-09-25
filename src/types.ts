@@ -14,7 +14,6 @@ export interface UserProps{
   company: string;
   website: string;
   phone: string;
-  address: string;
   id?: number;
   username?: string;
   name?: string,

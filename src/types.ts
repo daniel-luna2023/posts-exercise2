@@ -36,3 +36,10 @@ export interface Todo {
   completed: boolean;
   userId: number;
 }
+
+export interface CommentProps{
+  userId?: number;
+  postId?: number;
+  id?: number;
+  body?: string;
+}

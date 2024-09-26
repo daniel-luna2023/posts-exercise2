@@ -5,55 +5,53 @@ import api from '@/utils/api';
 import Comment from '@/components/Comment';
 import { PostProps } from '@/types';
 import { CommentProps } from '@/types';
-import Post from '@/components/Post';
+import PostLogo from '@/icons/postLogo';
+import DescriptionLogo from '@/icons/DescriptionLogo';
 
 const PostDetail = () => {
-  const { postId } = useParams();
+  const { postId } = useParams<{ postId: string }>();
   const [post, setPost] = useState<PostProps | null>(null);
   const [comments, setComments] = useState<CommentProps[]>([]);
   useEffect(() => {
-    const fetchPost = async () => {
-      try { 
-        const postId = '1'
-        const response = await api.get(`/posts/${postId}`);
-        setPost(response.data);
-      } catch (error) {
-        console.error('Error fetching post:', error);
-      }
-    };
+    if (postId){
+      const fetchPost = async () => {
+        try { 
+          const response = await api.get(`/posts/${parseInt(postId)}`);
+          setPost(response.data);
+        } catch (error) {
+          console.error('Error fetching post:', error);
+        }
+      };
+    
+  
 
     const fetchComments = async () => {
-      if (!post) return; 
       try {
-        const response = await api.get(`/posts/${post?.id}/comments`);
+        const response = await api.get(`/posts/${parseInt(postId)}/comments`);
         setComments(response.data);
       } catch (error) {
         console.error('Error fetching comments:', error);
       }
     };
+    
     fetchPost();
     fetchComments();
+  }
   }, [postId]);
   return (
     <div className="container mx-auto p-4">
       {post ? (
         <div className="mb-4 p-4">
           <div className="flex items-center mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 mr-2">
-              {/* SVG code */}
-            </svg>
-            <strong className="text-xl">Post title</strong>
+          <PostLogo />
           </div>
           <h1 className="mb-4 text-2xl font-bold">{post?.title}</h1>
           <div className="flex items-center mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 mr-2">
-              {/* SVG code */}
-            </svg>
-            <strong>Description</strong>
+          <DescriptionLogo />
           </div>
-          <p>{post?.body}</p><div>
+          <div>
             <ul>
-              {comments.map((comment) => (
+              {comments?.map((comment) => (
                 <Comment key={comment?.id} comment={comment} />
               ))}
             </ul>

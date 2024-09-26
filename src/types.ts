@@ -21,5 +21,5 @@ export interface CommentProps{
   userId?: number;
   postId?: number;
   id?: number;
-  body?: string;
+  commentBody?: string;
 }

@@ -49,6 +49,7 @@ const PostDetail = () => {
           <div className="flex items-center mb-2">
           <DescriptionLogo />
           </div>
+          <p> {post?.body} </p>
           <div>
             <ul>
               {comments?.map((comment) => (

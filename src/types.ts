@@ -15,5 +15,11 @@ export interface UserProps{
   street?: string,
   city?: string,
   zipcode?: string,
+}
 
+export interface CommentProps{
+  userId?: number;
+  postId?: number;
+  id?: number;
+  commentBody?: string;
 }

@@ -5,7 +5,7 @@ import api from '@/utils/api';
 import Comment from '@/components/Comment';
 import { PostProps } from '@/types';
 import { CommentProps } from '@/types';
-import PostLogo from '@/icons/postLogo';
+import PostLogo from '@/icons/PostLogo';
 import DescriptionLogo from '@/icons/DescriptionLogo';
 
 const PostDetail = () => {
